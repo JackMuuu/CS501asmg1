@@ -1,6 +1,8 @@
 package com.example.mytest
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -16,16 +18,14 @@ import com.example.mytest.ui.theme.MyTestTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            MyTestTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)  // Ensure this matches your layout file's name
+
+        val myButton: Button = findViewById(R.id.button)
+        val helloTextView: TextView = findViewById(R.id.helloTextView)
+
+        myButton.setOnClickListener {
+            helloTextView.visibility = TextView.VISIBLE
+            myButton.visibility = Button.GONE
         }
     }
 }
